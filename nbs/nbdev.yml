@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "suomi"
+  site-url: "https://doyu.github.io/suomi"
+  description: "suomi"
+  repo-branch: main
+  repo-url: "https://github.com/doyu/suomi"
