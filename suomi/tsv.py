@@ -82,23 +82,28 @@ def _assign_files_by_row(
     stem: str,             # File stem (TSV filename without extension)
     extensions: list[str], # List of extensions to process (e.g., [".mp3"] or [".png", ".jpg"])
     num_rows: int,         # Number of rows in TSV (determines result list length)
-    use_common: bool = False # Whether to use common files ({stem}.ext) as fallback
 ) -> list[str]:            # List of file paths, one per row (empty string if not found)
     """Assign files to rows based on naming conventions.
     
-    Returns a list of length num_rows where index i corresponds to row i:
-    - First tries {stem}_NN.ext (row-specific)
-    - If use_common=True and not found, tries {stem}.ext (common)
-    - If still not found, returns empty string
+    File naming rules:
+    - Row-specific: {stem}_NN.ext (e.g., "06_Daily_00.mp3" for row 0)
+    - Common: {stem}.ext (e.g., "06_Daily.png" for all rows)
+    
+    Behavior:
+    - First tries row-specific files ({stem}_NN.ext)
+    - If row-specific not found and common file ({stem}.ext) exists, uses common file
+    - If neither found, returns empty string
     
     For multiple extensions (e.g., [".png", ".jpg"]), uses first found in order.
+    
+    Returns a list of length num_rows where index i corresponds to row i.
     """
     import re
     
     # Build extension pattern
     ext_pat = '|'.join(re.escape(ext.lstrip('.')) for ext in extensions)
-    row_pat = re.compile(rf"^{re.escape(stem)}_(\\d{{2}})\\.({ext_pat})$", re.IGNORECASE)
-    common_pat = re.compile(rf"^{re.escape(stem)}\\.({ext_pat})$", re.IGNORECASE)
+    row_pat = re.compile(rf"^{re.escape(stem)}_(\d{{2}})\.({ext_pat})$", re.IGNORECASE)
+    common_pat = re.compile(rf"^{re.escape(stem)}\.({ext_pat})$", re.IGNORECASE)
     
     # Classify files
     by_row = {}  # {row_idx: {ext: path}}
@@ -111,11 +116,12 @@ def _assign_files_by_row(
             idx, ext = int(m.group(1)), "." + m.group(2).lower()
             by_row.setdefault(idx, {})[ext] = path
         else:
+            # Check if it's a common file
             m = common_pat.match(name)
             if m:
                 common["." + m.group(1).lower()] = path
-    
     # Assign files to rows (respecting extension priority)
+    # Use common files only if they exist (determined by whether common dict has entries)
     result = []
     for i in range(num_rows):
         path = ""
@@ -125,8 +131,8 @@ def _assign_files_by_row(
                 if ext in by_row[i]:
                     path = by_row[i][ext]
                     break
-        # If not found, try common files
-        if not path:
+        # If not found and common files exist, try common files
+        if not path and common:
             for ext in extensions:
                 if ext in common:
                     path = common[ext]

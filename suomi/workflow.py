@@ -48,17 +48,8 @@ def create_cards(
     audio_dir = f"{output_dir}/audio"
     images_dir = f"{output_dir}/images"
     
-    # Ensure output directory exists
     Path(output_dir).mkdir(parents=True, exist_ok=True)
-    
-    # 1. Translate and create TSV
     texts2tsv(texts, tsv_path, tags=tags)
-    
-    # 2. Generate audio files
     mp3s(tsv_path, output_dir=audio_dir)
-    
-    # 3. Update TSV with file paths (search both audio and images directories)
     update_tsv_media_paths(tsv_path, dirs=[audio_dir, images_dir])
-    
-    # 4. Upload to Anki
     addnotes(deck, tsv_path)
