@@ -33,9 +33,9 @@ def create(
         help="Anki deck name (e.g., '06::Daily')"
     ),
     tags: str = typer.Option(
-        "lang/fi",
+        "lang::fi",
         "--tags", "-t",
-        help="Comma-separated tags (lang/fi auto-included)"
+        help="Comma-separated tags (lang::fi auto-included)"
     ),
     output_dir: str = typer.Option(
         "output",
@@ -58,7 +58,7 @@ def create(
 
     Examples:
         suomi create words.txt --deck "06::Daily"
-        suomi create body_parts.txt -d "05::Keho" -t "src/class,level/A1"
+        suomi create body_parts.txt -d "05::Keho" -t "src::class,level::A1"
     """
     try:
         # Read texts from file

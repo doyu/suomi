@@ -17,14 +17,14 @@ from .xlate import xtexts
 def texts2tsv(
     texts: list[str],  # List of Finnish texts to translate
     output_path: str,  # Output TSV file path (e.g., "tsvs/06_Ruoka.tsv")
-    tags: str | list[str] = "lang/fi"  # Tags (string or list), lang/fi auto-included
+    tags: str | list[str] = "lang::fi"  # Tags (string or list), lang::fi auto-included
 ) -> None:
     """
     Main function: translate Finnish words and create TSV file.
     Example:
         >>> texts = ["omena", "banaani", "Minä syön omenaa"]
-        >>> texts2tsv(texts, "tsvs/06_Ruoka.tsv", tags="src/daily")
-        >>> texts2tsv(texts, "tsvs/06_Ruoka.tsv", tags=["src/class", "level/A1"])
+        >>> texts2tsv(texts, "tsvs/06_Ruoka.tsv", tags="src::daily")
+        >>> texts2tsv(texts, "tsvs/06_Ruoka.tsv", tags=["src::class", "level::A1"])
     """
     # Process tags
     if isinstance(tags, str):
@@ -32,9 +32,9 @@ def texts2tsv(
     else:
         tag_list = list(tags)
     
-    # Always ensure lang/fi is included
-    if "lang/fi" not in tag_list:
-        tag_list.insert(0, "lang/fi")
+    # Always ensure lang::fi is included
+    if "lang::fi" not in tag_list:
+        tag_list.insert(0, "lang::fi")
     
     # Convert to comma-separated string for TSV
     tag_string = ",".join(tag_list)

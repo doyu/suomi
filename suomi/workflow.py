@@ -7,6 +7,8 @@ __all__ = ['create_cards']
 
 # %% ../nbs/04_workflow.ipynb 2
 from pathlib import Path
+
+from .core import *
 from .tsv import *
 from .mp3 import *
 from .anki import *
@@ -15,8 +17,9 @@ from .anki import *
 def create_cards(
     texts: list[str],
     deck: str,
-    tags: str | list[str] = "lang/fi",
-    output_dir: str = "output"
+    tags: str | list[str] = "lang::fi",
+    output_dir: str = "output",
+    overwrite: bool = False,
 ) -> None:
     """
     Create Anki cards from Finnish texts (end-to-end workflow).
@@ -31,23 +34,38 @@ def create_cards(
         texts: List of Finnish words/phrases to create cards for
         deck: Anki deck name (e.g., "06::Daily")
         tags: Tags for the cards (string or list), hierarchical format supported
-              Examples: "src/daily", "src/class,level/A1", ["src/medical", "urgent"]
-              Note: "lang/fi" is always auto-included
+              Examples: "src::daily", "src::class,level::A1", ["src::medical", "urgent"]
+              Note: "lang::fi" is always auto-included
         output_dir: Directory for TSV and audio files (default: "output")
+        overwrite: If True, delete existing deck and overwrite TSV file
     
     Example:
         >>> create_cards(
         ...     texts=["kissa", "koira"],
         ...     deck="06::Daily",
-        ...     tags="src/daily"
+        ...     tags="src::daily"
         ... )
     """
-    # Create safe filename from deck name
-    tsv_name = deck.replace("::", "_") + ".tsv"
-    tsv_path = f"{output_dir}/{tsv_name}"
+    
+    tsv_path = f"{output_dir}/{deck.replace(":", "_") + ".tsv"}"
+    if overwrite:
+        if deck in deckNames():
+            deleteDeck(deck)
+        # TSV will be auto-overwritten by texts2tsv()
+    else:
+        if Path(tsv_path).exists():
+            raise FileExistsError(
+                f"TSV file already exists: {tsv_path}\n"
+                f"Use overwrite=True to replace it."
+            )
+        if deck in deckNames():
+            raise ValueError(
+                f"Deck '{deck}' already exists in Anki.\n"
+                f"Use overwrite=True to replace it."
+            )
+        
     audio_dir = f"{output_dir}/audio"
     images_dir = f"{output_dir}/images"
-    
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     texts2tsv(texts, tsv_path, tags=tags)
     mp3s(tsv_path, output_dir=audio_dir)
