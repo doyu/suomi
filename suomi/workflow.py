@@ -47,7 +47,7 @@ def create_cards(
         ... )
     """
     
-    tsv_path = f"{output_dir}/{deck.replace(":", "_") + ".tsv"}"
+    tsv_path = f"{output_dir}/{Path(deck.replace("::", "_")).stem + ".tsv"}"
     if overwrite:
         if deck in deckNames():
             deleteDeck(deck)

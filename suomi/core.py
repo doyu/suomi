@@ -68,4 +68,4 @@ def cattxt(fn: str) -> list[str]:
     with open(fn, encoding="utf-8") as f:
         return f.read().splitlines()
 
-cattxt("lääkarissä_kasvot.txt")[:4]
+#cattxt("lääkarissä_kasvot.txt")[:4]
