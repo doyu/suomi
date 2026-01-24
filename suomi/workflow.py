@@ -20,7 +20,7 @@ def create_cards(
     tags: str | list[str] = "lang::fi",
     output_dir: str = "output",
     overwrite: bool = False,
-) -> None:
+) -> Path:
     """
     Create Anki cards from Finnish texts (end-to-end workflow).
     
@@ -71,3 +71,4 @@ def create_cards(
     mp3s(tsv_path, output_dir=audio_dir)
     update_tsv_media_paths(tsv_path, dirs=[audio_dir, images_dir])
     addnotes(deck, tsv_path)
+    return tsv_path
