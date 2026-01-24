@@ -9,6 +9,7 @@ __all__ = ['texts2tsv', 'cattsv', 'update_tsv_media_paths']
 import os
 import csv
 import re
+import warnings
 from pathlib import Path
 from .core import ffr
 from .xlate import xtexts
@@ -102,7 +103,7 @@ def _assign_files_by_row(
     
     # Build extension pattern
     ext_pat = '|'.join(re.escape(ext.lstrip('.')) for ext in extensions)
-    row_pat = re.compile(rf"^{re.escape(stem)}_(\d{{2}})\.({ext_pat})$", re.IGNORECASE)
+    row_pat = re.compile(rf"^{re.escape(stem)}_(\d+)\.({ext_pat})$", re.IGNORECASE)
     common_pat = re.compile(rf"^{re.escape(stem)}\.({ext_pat})$", re.IGNORECASE)
     
     # Classify files
@@ -151,7 +152,7 @@ def update_tsv_media_paths(
     Searches for media files matching the TSV filename stem and assigns them to rows.
     Only non-empty rows are counted as entries (empty rows are skipped).
     
-    File naming rules (where {stem} = TSV filename without extension, NN = 2-digit row index):
+    File naming rules (where {stem} = TSV filename without extension, NN = zero-padded row index):
     
     MP3 files (row-specific only):
     - Pattern: {stem}_NN.mp3 (e.g., "05_Keho_00.mp3" for row 0)
@@ -186,6 +187,13 @@ def update_tsv_media_paths(
     
     # Images: row-specific + common fallback, png > jpg priority
     img_files = _assign_files_by_row(all_files, stem, [".png", ".jpg"], num_entries)
+
+    if num_entries > 100:
+        warnings.warn(
+            f"TSV '{tsv}' has {num_entries} entries; ensure mp3/image files exist for indexes >= 100.",
+            stacklevel=2,
+        )
+
     
     # Update rows with file paths (using enumerate to match entry indices)
     for i, row in enumerate(rows):
