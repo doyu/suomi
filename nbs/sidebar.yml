@@ -1,0 +1,11 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - 00_core.ipynb
+      - 00a_xlate.ipynb
+      - 01_tsv.ipynb
+      - 02_mp3.ipynb
+      - 03_anki.ipynb
+      - 04_workflow.ipynb
+      - 05_cli.ipynb
