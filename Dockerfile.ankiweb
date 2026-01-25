@@ -1,0 +1,66 @@
+# Dockerfile for headless Anki with AnkiConnect
+#
+# This Docker image provides:
+# - Xvfb (virtual X11 display server)
+# - Anki Desktop (running headless)
+# - AnkiConnect plugin
+# - Python environment with suomi package
+#
+# Usage:
+#   docker build -f Dockerfile.ankiweb -t suomi-ankiweb .
+#   docker run -e ANKIWEB_USERNAME=user -e ANKIWEB_PASSWORD=pass suomi-ankiweb
+#
+# TODO: Complete implementation
+
+FROM ubuntu:22.04
+
+# Prevent interactive prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    # Virtual display
+    xvfb \
+    # Anki dependencies
+    python3 \
+    python3-pip \
+    # Download tools
+    wget \
+    curl \
+    # Cleanup
+    && rm -rf /var/lib/apt/lists/*
+
+# TODO: Install Anki Desktop
+# Options:
+# 1. Download .deb from https://github.com/ankitects/anki/releases
+# 2. Use pip: pip install anki (may not include GUI components)
+
+# TODO: Install AnkiConnect plugin
+# - Download from https://ankiweb.net/shared/info/2055492159
+# - Install to ~/.local/share/Anki2/addons21/
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip3 install -r requirements.txt
+
+# Copy suomi package
+COPY . /app/suomi
+WORKDIR /app/suomi
+RUN pip3 install -e .
+
+# TODO: Configure Xvfb and Anki startup script
+# Example:
+# - Start Xvfb on :99
+# - Export DISPLAY=:99
+# - Start Anki in background
+# - Keep container running
+
+# Environment variables (override with docker run -e)
+ENV ANKIWEB_USERNAME=""
+ENV ANKIWEB_PASSWORD=""
+ENV DISPLAY=:99
+
+# TODO: Add entrypoint script
+# ENTRYPOINT ["/app/entrypoint.sh"]
+
+CMD ["echo", "Dockerfile placeholder - implementation pending"]
