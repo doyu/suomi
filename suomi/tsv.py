@@ -4,7 +4,7 @@
 
 # %% auto #0
 __all__ = ['texts2tsv', 'tsv_load', 'cattsv', 'tsv_dump', 'dump_tsv', 'update_tsv_media_paths', 'tsv_finnish', 'tsv_status',
-           'tsv_en_ja', 'tsv_mp3', 'tsv_img']
+           'tsv_xlate', 'tsv_en_ja', 'tsv_mp3', 'tsv_img']
 
 # %% ../nbs/01_tsv.ipynb #3
 import os
@@ -405,6 +405,81 @@ def tsv_status(tsv: str) -> dict:
     status["completion_rate"] = status["fully_complete"] / status["total_rows"] if status["total_rows"] > 0 else 0.0
 
     return status
+
+# %% ../nbs/01_tsv.ipynb #gv9pdtahhmw
+def tsv_xlate(
+    tsv: str,
+    target_langs: list[str] = ["English", "Japanese"],
+    skip_filled: bool = True,
+    batch_size: int = 10
+) -> dict:
+    """Translate empty fields in TSV using API.
+    
+    Processes only rows with empty English/Japanese columns.
+    Uses batch processing to handle API rate limits.
+    
+    Args:
+        tsv: TSV file path
+        target_langs: Languages to translate (currently only ["English", "Japanese"])
+        skip_filled: Skip rows that already have translations
+        batch_size: Number of rows per API batch
+        
+    Returns:
+        {
+            "translated": 8,      # Successfully translated rows
+            "skipped": 2,         # Already filled rows
+            "errors": 1,          # Failed rows
+            "error_details": [    # Error details list
+                {"row": 3, "finnish": "text", "error": "API timeout"}
+            ]
+        }
+    """
+    ensure_columns(tsv)
+    rows, fields = tsv_load(tsv)
+    
+    result = {"translated": 0, "skipped": 0, "errors": 0, "error_details": []}
+    to_translate = []
+    
+    # Collect rows that need translation
+    for i, row in enumerate(rows):
+        if not row["Finnish"].strip():
+            continue
+        if skip_filled and row["English"].strip():
+            result["skipped"] += 1
+            continue
+        to_translate.append((i, row))
+    
+    # Batch processing
+    for batch_start in range(0, len(to_translate), batch_size):
+        batch = to_translate[batch_start:batch_start + batch_size]
+        finnish_texts = [row["Finnish"] for _, row in batch]
+        
+        try:
+            translations = xtexts(finnish_texts)
+            for (i, row), trans in zip(batch, translations):
+                row["English"] = trans.get("English", "")
+                row["Japanese"] = trans.get("Japanese", "")
+                result["translated"] += 1
+        except Exception as e:
+            # Batch failed, retry one by one
+            for i, row in batch:
+                try:
+                    trans = xtexts([row["Finnish"]])[0]
+                    row["English"] = trans.get("English", "")
+                    row["Japanese"] = trans.get("Japanese", "")
+                    result["translated"] += 1
+                except Exception as err:
+                    result["errors"] += 1
+                    result["error_details"].append({
+                        "row": i,
+                        "finnish": row["Finnish"],
+                        "error": str(err)
+                    })
+    
+    # Write back
+    tsv_dump(tsv, rows, fields)
+    
+    return result
 
 # %% ../nbs/01_tsv.ipynb #4rimscvm4d4
 def tsv_en_ja(
