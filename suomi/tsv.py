@@ -4,7 +4,7 @@
 
 # %% auto #0
 __all__ = ['texts2tsv', 'tsv_load', 'cattsv', 'tsv_dump', 'dump_tsv', 'update_tsv_media_paths', 'tsv_finnish', 'tsv_status',
-           'tsv_xlate', 'tsv_en_ja', 'tsv_mp3', 'tsv_img']
+           'tsv_xlate', 'tsv_en_ja', 'tsv_mp3', 'tsv_img', 'tsv_complete']
 
 # %% ../nbs/01_tsv.ipynb #3
 import os
@@ -592,3 +592,38 @@ def tsv_img(
             row["img_path"] = img_paths[i]
     
     tsv_dump(tsv, rows, fields)
+
+# %% ../nbs/01_tsv.ipynb #j4sm240mzn
+def tsv_complete(
+    tsv: str,                                       # TSV file path
+    tasks: list[str] = ["translate", "mp3", "img"], # Tasks to run
+    dirs: list[str] = ["audio", "images"]           # Directories for media
+) -> dict:
+    """Run pipeline tasks on TSV (translate → mp3 → img).
+    
+    Each task is optional and runs only if listed in tasks.
+    Results from each task are collected and returned.
+    
+    Args:
+        tsv: TSV file path
+        tasks: List of tasks to run. Options: "translate", "mp3", "img"
+        dirs: Directories for media search (used by img task)
+        
+    Returns:
+        Dict with results keyed by task name.
+        Example: {"translate": {"translated": 2, ...}, "mp3": "done", "img": "done"}
+    """
+    result = {}
+    
+    if "translate" in tasks:
+        result["translate"] = tsv_xlate(tsv)
+    
+    if "mp3" in tasks:
+        tsv_mp3(tsv)
+        result["mp3"] = "done"
+    
+    if "img" in tasks:
+        tsv_img(tsv, dirs=dirs)
+        result["img"] = "done"
+    
+    return result
