@@ -8,7 +8,7 @@ __all__ = ['LIB_ROOT', 'TEXTS_DIR', 'app', 'create', 'main']
 # %% ../nbs/05_cli.ipynb #894bfa2c
 import typer
 from pathlib import Path
-from .workflow import create_cards
+from .workflow import register_cards
 
 LIB_ROOT = Path(__file__).resolve().parents[1] if "__file__" in globals() else Path.cwd()
 TEXTS_DIR = (LIB_ROOT / "nbs" / "texts").resolve()
@@ -38,7 +38,6 @@ def _resolve_text_source(input_arg: str) -> Path:
     raise FileNotFoundError(
         f"Text source '{input_arg}' not found. Checked: {search_list}"
     )
-
 
 # %% ../nbs/05_cli.ipynb #edf7a70d
 app = typer.Typer(
@@ -105,7 +104,7 @@ def create(
         typer.echo(f"📖 Read {len(texts)} text(s) from {input_path}")
         typer.echo(f"🔄 Creating cards for deck: {deck}")
 
-        create_cards(
+        register_cards(
             texts=texts,
             deck=deck,
             tags=tags,
@@ -122,4 +121,3 @@ def create(
 def main():
     """Entry point for console script."""
     app()
-
