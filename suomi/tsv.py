@@ -9,6 +9,7 @@ __all__ = ['texts2tsv', 'cattsv', 'update_tsv_media_paths', 'tsv_finnish']
 import os
 import csv
 import re
+import hashlib
 import warnings
 from pathlib import Path
 from .core import ffr
@@ -207,21 +208,60 @@ def update_tsv_media_paths(
         w.writeheader()
         w.writerows(rows)
 
+# %% ../nbs/01_tsv.ipynb #8saobr76p2t
+def calculate_finnish_hash(finnish: str) -> str:
+    """Calculate deterministic hash for Finnish text (for duplicate detection).
+
+    Normalization rules:
+    - Lowercase
+    - Strip leading/trailing whitespace
+    - Collapse multiple spaces to single space
+
+    Returns: First 8 characters of SHA256 hash (e.g., "a3f2b1c9")
+
+    Examples:
+        >>> calculate_finnish_hash("Hei")
+        'a1b2c3d4'  # Consistent hash
+        >>> calculate_finnish_hash("hei")
+        'a1b2c3d4'  # Same hash (case normalized)
+        >>> calculate_finnish_hash("  Hei  maailma  ")
+        'e5f6g7h8'  # Whitespace normalized
+    """
+    # Normalize: lowercase, strip whitespace, collapse multiple spaces
+    normalized = re.sub(r'\s+', ' ', finnish.strip().lower())
+    
+    # Calculate SHA256 hash
+    hash_bytes = hashlib.sha256(normalized.encode('utf-8')).hexdigest()
+    
+    # Return first 8 characters
+    return hash_bytes[:8]
+
 # %% ../nbs/01_tsv.ipynb #15898b95-f210-4dcd-9569-1ae4e783c8ad
 def ensure_columns(tsv: str) -> None:
     """Ensure TSV has all required columns, add missing ones.
 
     Migration helper for old TSV files. Adds missing columns with empty values.
+    
+    Special handling for finnish_hash:
+    - If column missing or value empty, auto-calculates from Finnish column
+    - Preserves existing finnish_hash values (does not overwrite)
     """
     REQUIRED_COLUMNS = ["Finnish", "English", "Japanese", "mp3_path", "finnish_hash", "img_path", "tags"]
     rows, fields = cattsv(tsv)
     missing = [col for col in REQUIRED_COLUMNS if col not in fields]
-    if not missing:
-        return
-
+    
+    # Add missing columns with empty values
+    if missing:
+        for row in rows:
+            for col in missing:
+                row[col] = ""
+    
+    # Auto-calculate finnish_hash for rows where it's missing or empty
     for row in rows:
-        for col in missing:
-            row[col] = ""
+        if not row.get("finnish_hash", "").strip():
+            finnish_text = row.get("Finnish", "")
+            if finnish_text:
+                row["finnish_hash"] = calculate_finnish_hash(finnish_text)
 
     with open(tsv, "w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=REQUIRED_COLUMNS, delimiter="\t")
@@ -237,6 +277,9 @@ def tsv_finnish(
 ) -> None:
     """Create TSV file with Finnish column only, other columns empty.
 
+    Automatically calculates finnish_hash for each text and removes duplicates
+    (case-insensitive, whitespace-normalized). First occurrence is kept.
+
     Args:
         texts: Finnish words/phrases to add
         output_path: TSV file path to create
@@ -246,6 +289,7 @@ def tsv_finnish(
 
     Examples:
         >>> tsv_finnish(["kissa", "koira"], "vocab.tsv")  # Uses default tags="lang::fi"
+        >>> tsv_finnish(["kissa", "Kissa", "koira"], "vocab.tsv")  # Removes duplicate "Kissa"
         >>> tsv_finnish(["kissa"], "vocab.tsv", tags="lang::fi,src::daily")
         >>> tsv_finnish(["koira"], "vocab.tsv", tags=["src::class", "level::A1"])
     """
@@ -254,6 +298,16 @@ def tsv_finnish(
         raise FileExistsError(f"TSV file already exists: {output_path}. Use overwrite=True to replace.")
     out.parent.mkdir(parents=True, exist_ok=True)
     tag_string = ",".join([t.strip() for t in tags.split(",")] if isinstance(tags, str) else list(tags))
+    
+    # Remove duplicates using hash-based deduplication
+    seen_hashes = set()
+    unique_texts = []
+    for text in texts:
+        text_hash = calculate_finnish_hash(text)
+        if text_hash not in seen_hashes:
+            seen_hashes.add(text_hash)
+            unique_texts.append((text, text_hash))
+    
     with open(out, "w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(
             f,
@@ -261,13 +315,13 @@ def tsv_finnish(
             delimiter="\t"
         )
         writer.writeheader()
-        for text in texts:
+        for text, text_hash in unique_texts:
             writer.writerow({
                 "Finnish": text,
                 "English": "",
                 "Japanese": "",
                 "mp3_path": "",
-                "finnish_hash": "",
+                "finnish_hash": text_hash,
                 "img_path": "",
                 "tags": tag_string
             })
