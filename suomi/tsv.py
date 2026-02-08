@@ -295,16 +295,17 @@ def ensure_columns(tsv: str) -> None:
 
 # %% ../nbs/01_tsv.ipynb #pyzxjb61ucq
 def tsv_finnish(
-    texts: list[str],           # Finnish words/phrases
-    output_path: str,           # TSV file path
+    texts: list[str],
+    output_path: str,
     tags: str | list[str] = "lang::fi",
-    overwrite: bool = False     # Overwrite existing TSV
+    overwrite: bool = False,
 ) -> None:
-    """Create TSV file with Finnish column only, other columns empty.
-
-    Automatically calculates finnish_hash for each text and removes duplicates
-    (case-insensitive, whitespace-normalized). First occurrence is kept.
-
+    """Create TSV with Finnish column only. Other columns are empty.
+    
+    Automatically removes duplicates (case-insensitive, whitespace-normalized)
+    and filters out empty/whitespace-only texts.
+    Pre-computes finnish_hash for each entry.
+    
     Args:
         texts: Finnish words/phrases to add
         output_path: TSV file path to create
@@ -324,10 +325,12 @@ def tsv_finnish(
     out.parent.mkdir(parents=True, exist_ok=True)
     tag_string = ",".join([t.strip() for t in tags.split(",")] if isinstance(tags, str) else list(tags))
     
-    # Remove duplicates using hash-based deduplication
+    # Remove duplicates and empty texts using hash-based deduplication
     seen_hashes = set()
     unique_texts = []
     for text in texts:
+        if not text or not text.strip():
+            continue
         text_hash = calculate_finnish_hash(text)
         if text_hash not in seen_hashes:
             seen_hashes.add(text_hash)
