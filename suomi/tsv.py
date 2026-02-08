@@ -524,9 +524,9 @@ def tsv_en_ja(
 
 # %% ../nbs/01_tsv.ipynb #1pnpg17xy8ji
 def tsv_mp3(
-    tsv: str,                                      # TSV file to update
-    output_dir: str = "audio",                     # Output directory for MP3 files
-    model: str = "models/fi_FI-harri-low.onnx"    # Piper model path
+    tsv: str,                    # TSV file to update
+    output_dir: str = "audio",   # Output directory for MP3 files
+    model: str | None = None     # Piper model path (auto-downloaded if None)
 ) -> None:
     """Generate MP3 files and update TSV with paths.
     
@@ -536,7 +536,7 @@ def tsv_mp3(
     Args:
         tsv: TSV file path
         output_dir: Directory to save MP3 files
-        model: Piper TTS model path
+        model: Piper TTS model path (None = auto-download from HuggingFace)
         
     Examples:
         >>> tsv_finnish(["kissa"], "vocab.tsv")
