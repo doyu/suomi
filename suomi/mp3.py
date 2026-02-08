@@ -39,6 +39,8 @@ def text2wav(
     model: str | None = None   # Piper TTS model path (auto-downloaded if None)
 ) -> None:
     """Convert text to WAV using Piper TTS."""
+    if not s or not s.strip():
+        return
     if model is None:
         model = piper_model()
     try:
@@ -81,6 +83,8 @@ def text2mp3(
     model: str | None = None   # Piper TTS model path (auto-downloaded if None)
 ) -> None:
     """Convert text to MP3 via WAV using Piper TTS and ffmpeg."""
+    if not s or not s.strip():
+        return
     if model is None:
         model = piper_model()
     wav = "output.wav"

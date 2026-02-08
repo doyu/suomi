@@ -528,16 +528,11 @@ def tsv_mp3(
     output_dir: str = "audio",   # Output directory for MP3 files
     model: str | None = None     # Piper model path (auto-downloaded if None)
 ) -> None:
-    """Generate MP3 files and update TSV with paths.
+    """Generate MP3 files and update TSV with paths (differential update).
     
-    Processes only rows with empty mp3_path (differential update).
-    File naming: {stem}_{row_index:02d}.mp3
+    Only processes rows where mp3_path is empty and Finnish text is non-empty.
+    Uses text2mp3() from suomi.mp3 for audio generation.
     
-    Args:
-        tsv: TSV file path
-        output_dir: Directory to save MP3 files
-        model: Piper TTS model path (None = auto-download from HuggingFace)
-        
     Examples:
         >>> tsv_finnish(["kissa"], "vocab.tsv")
         >>> tsv_mp3("vocab.tsv", output_dir="audio")
@@ -549,9 +544,12 @@ def tsv_mp3(
     stem = Path(tsv).stem
     
     for i, row in enumerate(rows):
+        finnish = row.get("Finnish", "").strip()
+        if not finnish:
+            continue
         if not row.get("mp3_path", "").strip():
             mp3_file = f"{output_dir}/{stem}_{i:02d}.mp3"
-            text2mp3(row["Finnish"], mp3_file, model)
+            text2mp3(finnish, mp3_file, model)
             row["mp3_path"] = mp3_file
     
     tsv_dump(tsv, rows, fields)
