@@ -1,0 +1,23 @@
+Ensimmäinen kuukausi on tammikuu. Tammi.
+Toinen kuukausi on helmikuu. Helmi.
+Kolmas kuukausi on maaliskuu. Maa.
+Neljäs kuukausi on huhtikuu. Huhta.
+Viides kuukausi on toukokuu. Touko.
+Kuudes kuukausi on kesäkuu. Kesä.
+Seitsemäs kuukausi on heinäkuu. Heinä.
+Kahdeksas kuukausi on elokuu. Elo.
+Yhdeksäs kuukausi on syyskuu. Syys.
+Kymmenes kuukausi on lokakuu. Loka.
+Ensimmäinen kerros on ensimmäisessä kerroksessa.
+Toinen kerros on toisessa kerroksessa.
+Kolmas kerros on kolmannessa kerroksessa.
+Neljäs kerros on neljännessä kerroksessa.
+Viides kerros on viidennessä kerroksessa.
+Kuudes kerros on kuudennessa kerroksessa.
+Seitsemäs kerros on seitsemännessä kerroksessa.
+Kahdeksas kerros on kahdeksannessa kerroksessa.
+Yhdeksäs kerros on yhdeksännessä kerroksessa.
+Kymmenes kerros on kymmenennessä kerroksessa.
+Eka on ensimmäinen.
+Toka on toinen.
+Vika on viimeinen.

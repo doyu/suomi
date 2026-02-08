@@ -1,0 +1,79 @@
+Ihan hyvää, kiitos.
+Ei kovin hyvää.
+Minulla on huono olo.
+Minulla on kuumetta.
+Minulla on selkä kipeä.
+Minulla on pää kipeä.
+Kyllä, minulla on kuumetta.
+Minulla on kuumetta 38 astetta.
+Minulla on flunssa.
+Minulla on vatsatauti.
+Minua oksettaa.
+Minä oksennan.
+Minulla on ripuli.
+Minulla on päänsärky.
+Minulla on kurkku kipeä.
+Kyllä, minulla on yskä.
+Kyllä, minulla on nuha.
+Se alkoi viime viikolla.
+Se on jatkunut yli kaksi viikkoa.
+En, nukun huonosti.
+Minä olen masentunut.
+Minulla on korkea verenpaine.
+Kyllä, käytän Buranaa.
+En käytä mitään lääkettä.
+Lääkäri tutkii minut.
+Hän kirjoittaa reseptin.
+Se on ensimmäisessä kerroksessa.
+Apteekki on neljännessä kerroksessa.
+Hän soittaa perjantaina.
+Olen raskaana ja odotan vauvaa.
+Mitä kuuluu.
+Miten voin auttaa.
+Onko sinulla kuumetta.
+Paljonko kuumetta on.
+Mikä sinulla on.
+Mitä oireita sinulla on.
+Onko sinulla kipuja.
+Onko sinulla yskää.
+Onko sinulla nuhaa.
+Kuinka pitkään se on jatkunut.
+Nukutko hyvin.
+Mikä sinua vaivaa.
+Käytätkö lääkettä.
+Mitä lääkäri tekee.
+Mitä lääkäri tekee nyt.
+Missä laboratorio on.
+Missä apteekki on.
+Milloin lääkäri soittaa.
+Mikä sinun tilanteesi on.
+Mitä kuuluu. Ihan hyvää, kiitos.
+Mitä kuuluu. Ei kovin hyvää.
+Miten voin auttaa. Minulla on huono olo.
+Miten voin auttaa. Minulla on kuumetta.
+Miten voin auttaa. Minulla on selkä kipeä.
+Miten voin auttaa. Minulla on pää kipeä.
+Onko sinulla kuumetta. Kyllä, minulla on kuumetta.
+Paljonko kuumetta on. Minulla on kuumetta 38 astetta.
+Mikä sinulla on. Minulla on flunssa.
+Mikä sinulla on. Minulla on vatsatauti.
+Mitä oireita sinulla on. Minua oksettaa.
+Mitä oireita sinulla on. Minä oksennan.
+Mitä oireita sinulla on. Minulla on ripuli.
+Onko sinulla kipuja. Minulla on päänsärky.
+Onko sinulla kipuja. Minulla on kurkku kipeä.
+Onko sinulla yskää. Kyllä, minulla on yskä.
+Onko sinulla nuhaa. Kyllä, minulla on nuha.
+Kuinka pitkään se on jatkunut. Se alkoi viime viikolla.
+Kuinka pitkään se on jatkunut. Se on jatkunut yli kaksi viikkoa.
+Nukutko hyvin. En, nukun huonosti.
+Mikä sinua vaivaa. Minä olen masentunut.
+Mikä sinua vaivaa. Minulla on korkea verenpaine.
+Käytätkö lääkettä. Kyllä, käytän Buranaa.
+Käytätkö lääkettä. En käytä mitään lääkettä.
+Mitä lääkäri tekee. Lääkäri tutkii minut.
+Mitä lääkäri tekee nyt. Hän kirjoittaa reseptin.
+Missä laboratorio on. Se on ensimmäisessä kerroksessa.
+Missä apteekki on. Apteekki on neljännessä kerroksessa.
+Milloin lääkäri soittaa. Hän soittaa perjantaina.
+Mikä sinun tilanteesi on. Olen raskaana ja odotan vauvaa.

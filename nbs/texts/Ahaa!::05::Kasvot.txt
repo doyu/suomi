@@ -1,0 +1,44 @@
+Mulla on kasvot kipeät.
+Mulla on kasvot turvonneet.
+Mulla on otsa kipeä.
+Mulla on silmä kipeä.
+Mulla on silmä punainen.
+Mulla on nenä tukossa.
+Mulla vuotaa nenä.
+Mulla on poski turvonnut.
+Mulla on korva kipeä.
+Mulla on hammas kipeä.
+Mulla on suu kipeä.
+Mulla on huulet kuivat.
+Mulla on huulet kipeät.
+Mulla on leuka kipeä.
+Mulla on kurkku kipeä.
+Mulla on kaula kipeä.
+Mulla on kaula jäykkä ja kipeä.
+Mulla lähtee hiukset.
+Mulla on tukka kipeä.
+Missä sattuu.
+Mikä vaivaa.
+Onko silmä punainen.
+Vuotaako nenä.
+Mikä on turvonnut.
+Sattuuko huuliin.
+Sattuuko kun avaat suun.
+Sattuuko nieltäessä.
+Onko kaula jäykkä.
+Missä sattuu. Mulla on otsa kipeä.
+Missä sattuu. Mulla on silmä kipeä.
+Onko silmä punainen. Mulla on silmä punainen.
+Mikä vaivaa. Mulla on nenä tukossa.
+Vuotaako nenä. Mulla vuotaa nenä.
+Mikä on turvonnut. Mulla on poski turvonnut.
+Missä sattuu. Mulla on hammas kipeä.
+Sattuuko huuliin. Mulla on huulet kipeät.
+Sattuuko kun avaat suun. Mulla on leuka kipeä.
+Sattuuko nieltäessä. Mulla on kurkku kipeä.
+Onko kaula jäykkä. Mulla on kaula jäykkä ja kipeä.
+Se sattuu vähän.
+Se sattuu paljon.
+Se on oikealla puolella.
+Se on vasemmalla puolella.
+Se alkoi eilen.

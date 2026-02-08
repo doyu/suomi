@@ -1,0 +1,39 @@
+Onko hän naimisissa? — Kyllä, hän on naimisissa. Hänellä on puoliso.
+Oletko naimaton? — Kyllä, olen naimaton. Mulla ei ole puolisoa.
+Ovatko he eronneet? — Kyllä, he ovat eronneet.
+Onko hän leski? — Kyllä, hän on leski. Puoliso on kuollut. Hänen puolisonsa on kuollut.
+Oletteko kihloissa? — Kyllä, olemme kihloissa.
+Onko hän avoliitossa? — Kyllä, hän on avoliitossa. He asuvat yhdessä.
+Onko hänellä mies? — Kyllä, hänellä on mies.
+Onko sulla vaimo? — Kyllä, mulla on vaimo.
+Onko heillä puolisoita? — Kyllä, heillä on puolisoita.
+Onko hänellä avomies? — Kyllä, hänellä on avomies.
+Onko sulla avovaimo? — Kyllä, mulla on avovaimo.
+Onko hänellä miesystävä? — Kyllä, hänellä on miesystävä.
+Onko heillä naisystävä? — Kyllä, heillä on naisystävä.
+Onko hänellä lapsia? — Kyllä, hänellä on lapsia.
+Onko teillä lapsia? — Ei, meillä ei ole lapsia.
+Kuinka monta lasta hänellä on? — Hänellä on yksi lapsi.
+Kuinka monta lasta sulla on? — Mulla on kaksi lasta.
+Kuinka monta lasta heillä on? — Heillä on kolme lasta.
+Onko hänellä tytär? — Kyllä, hänellä on yksi tytär.
+Onko teillä poika? — Kyllä, meillä on yksi poika.
+Kuinka monta tytärtä hänellä on? — Hänellä on kaksi tytärtä.
+Kuinka monta poikaa heillä on? — Heillä on kaksi poikaa.
+Onko hänellä veli? — Kyllä, hänellä on veli.
+Onko sulla sisko? — Kyllä, mulla on sisko.
+Onko heillä sisaruksia? — Kyllä, heillä on sisaruksia.
+Onko hänellä sisaruksia? — Ei, hänellä ei ole sisaruksia.
+Onko hän ainoa lapsi? — Kyllä, hän on ainoa lapsi.
+Missä hänen vanhempansa asuvat? — He asuvat Suomessa.
+Asuuko hänen äitinsä Helsingissä? — Kyllä, hänen äitinsä asuu Helsingissä.
+Asuuko heidän isänsä Espoossa? — Kyllä, heidän isänsä asuu Espoossa.
+Ovatko hänen isovanhempansa elossa? — Kyllä, hänen isovanhempansa ovat elossa.
+Ovatko heidän isovanhempansa elossa? — Ei, heidän isovanhempansa ovat kuolleet.
+Missä hänen mummonsa ja ukkinsa asuvat? — He asuvat maalla.
+Missä heidän anoppinsa ja appinsa asuvat? — He asuvat Espoossa.
+Ovatko hänen anoppinsa ja appinsa elossa? — Kyllä, he ovat elossa.
+Onko hänellä lapsenlapsia? — Kyllä, hänellä on lapsenlapsia.
+Kuka tämä on? — Hän on hänen lapsenlapsensa.
+Onko hän isoäiti? — Kyllä, hän on isoäiti.
+Onko hän isoisä? — Kyllä, hän on isoisä.

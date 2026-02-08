@@ -1,0 +1,41 @@
+Tammikuu on talvikuukausi ja on hyvin kylmä.  Tammi.
+Helmikuu on talvikuukausi ja päivät alkavat pidentyä.  Helmi.
+Maaliskuu on kevään alku ja lunta on vielä.  Maa.
+Huhtikuu on kevätkuukausi ja lumi sulaa nopeasti.  Huhta.
+Toukokuu on kevätkuukausi ja luonto vihertyy.  Touko.
+Kesäkuu on kesäkuukausi ja päivät ovat hyvin pitkiä.  Kisä.
+Heinäkuu on keskikesää ja on usein lämmin.  Hainä.
+Elokuu on loppukesää ja illat pimenevät.  Elo.
+Syyskuu on syyskuukausi ja lehdet kellastuvat.  Syys.
+Lokakuu on syyskuukausi ja on usein sateinen.  Loka.
+Marraskuu on myöhäissyksyä ja on hyvin pimeä.  Marras.
+Joulukuu on talvikuukausi ja joulun aikaa.  Joulu.
+Tammikuu on talvikuukausi.  Tammi.
+Helmikuu on talvikuukausi.  Helmi.
+Maaliskuu on kevään alku.  Maa.
+Huhtikuu on kevätkuukausi.  Huhta.
+Toukokuu on kevätkuukausi.  Touko.
+Kesäkuu on kesäkuukausi.  Kesä.
+Heinäkuu on keskikesää.  Heina.
+Elokuu on loppukesää.  Elo.
+Syyskuu on syyskuukausi.  Syys.
+Lokakuu on syyskuukausi.  Loka.
+Marraskuu on myöhäissyksyä.  Marras.
+Joulukuu on talvikuukausi.  Joulu.
+Talvella on usein hyvin kylmä.
+Keväällä lumi sulaa.
+Keväällä luonto vihertyy.
+Kesällä päivät ovat pitkiä.
+Kesällä on usein lämmintä.
+Loppukesällä illat pimenevät.
+Syksyllä lehdet kellastuvat.
+Syksyllä on usein sateista.
+Myöhäissyksyllä on hyvin pimeää.
+Talvella on joulun aika.
+Mikä kuukausi on talvella.
+Tammikuu on talvella.
+Milloin kevät alkaa.
+Kevät alkaa maaliskuussa.
+Milloin päivät ovat pisimmät.
+Päivät ovat pisimmät kesällä.
+

@@ -1,0 +1,25 @@
+Alilla on kurkku kipeä. Alin täytyy juoda kuumaa mehua. Alin pitää levätä.
+Alilla on kuumetta. Alin täytyy jäädä kotiin. Alin ei saa mennä töihin.
+Nasim on väsynyt. Nasimin täytyy nukkua. Nasimin ei tarvitse tehdä mitään tänään.
+Zahra on surullinen. Zahran täytyy puhua ystävän kanssa. Zahran ei kannata olla yksin.
+Matti painaa 120 kiloa. Matin täytyy liikkua enemmän. Matin pitäisi liikkua enemmän.
+Jenni on liian laiha. Jennin täytyy syödä enemmän. Jennin ei pitäisi jättää aterioita väliin.
+Saaralla on selkä kipeä. Saaran täytyy mennä lääkäriin. Saaran ei kannata nostaa raskasta.
+Käärme puree Alia. Alin täytyy mennä sairaalaan. Alin on pakko hakea apua heti.
+Leilalla on siitepölyallergia. Leilan täytyy ottaa lääkettä. Leilan ei kannata olla ulkona pitkään.
+Hänellä on ihottumaa. Hänen täytyy mennä lääkäriin. Hänen ei pidä raapia ihoa.
+Mitä sinun täytyy tehdä tänään? Mun täytyy opiskella suomea. Mun on pakko tehdä töitä.
+Mitä sinun täytyy tehdä huomenna? Mun pitää mennä lääkäriin. Mun ei tarvitse tehdä mitään huomenna.
+Mitä sinun täytyy tehdä tällä viikolla? Mun täytyy opiskella paljon. Mun ei tarvitse matkustaa.
+Mun täytyy pukeutua lämpimästi. Mun pitää olla ajoissa. Mä en saa valvoa myöhään.
+Sinun täytyy juoda enemmän, jos on jano. Sun ei tarvitse pukea takkia. Sä et saa lähteä myöhään.
+Hänen täytyy levätä. Sen ei tarvitse jäädä sairaalaan. Se ei saa tulla myöhässä.
+Meidän täytyy pukeutua lämpimästi. Me ei tarvitse jäädä kotiin. Me ei saa olla myöhässä.
+Teidän täytyy olla ajoissa. Te ette saa jäädä liian pitkään. Te ei tarvitse pukea takkia.
+Heidän täytyy levätä enemmän. Ne ei tarvitse tulla ajoissa tänään. Ne ei saa lähteä myöhään.
+Oletko varannut ajan? Mun täytyy mennä huomenna. Sun ei tarvitse tulla mukaan.
+Oletko janoinen? Mun pitää juoda enemmän. Mä en saa juoda alkoholia.
+Lähdetäänkö nyt? Mun täytyy olla ajoissa. Mä en saa olla myöhässä.
+Miksi olet takissa? Mun täytyy pukeutua lämpimästi. Mä en saa palella.
+Mitä ottaisit? Ottaisin, mutta en saa. Sun ei tarvitse ottaa mitään.
+Miten voit? Oon masentunut. Mun täytyy levätä. Mun ei tarvitse tehdä kaikkea nyt.

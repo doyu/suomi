@@ -1,0 +1,43 @@
+Missä sä opiskelit kotimaassasi? Mä opiskelin yliopistossa.
+Onko sulla työkokemusta Suomessa? Ei ole. Mä opiskelen suomea kurssilla.
+AI-yritys kehittää ohjelmistoja. Yritys on osakeyhtiö.
+Missä opiskelit? Mä opiskelin yliopistossa. Olin opiskelija. En oo töissä. En Oo työtön.
+Mulla on tapaaminen. Sovitaan tapaaminen. Perutaan tapaaminen. Siirretään tapaamista. Mulla on palaveri.
+He keskustelevat Zahran opiskelusta ja tulevaisuuden suunnitelmista.
+Onko sinulla todistus? Minulla on yliopistotodistus. Olen kiinnostunut tästä ammatista.
+Onko sinulla työkokemusta Suomessa? Ei ole. Mä opiskelen suomea kurssilla.
+Onko tämä sinun ensimmäinen suomen kielen kurssi? Kyllä se on. Se alkoi elokuussa ja loppuu kesäkuussa.
+Oletko ollut työharjoittelussa opiskelun aikana? Kyllä, syksyllä olin neljä viikkoa työharjoittelussa päiväkodissa.
+Oon töissä Omniassa opettajana. Piditkö siitä työstä? Kyllä, pidin siitä. Meen töihin aamulla kello 8. Minä tuun töistä neljältä.
+Olen kiinnostunut tästä työstä.
+Haluatko lisää? Se riittää. Ei tarvitse. Kiitos, riittää.
+Osaan laskea hyvin, olen tarkka ja huolellinen. Tarkka ihminen ei tee virheitä.
+Entä sinun miehesi, onko hän töissä? Hänen ammattinsa on kuljettaja. Hänellä on pieni firma.
+Milloin sinun täytyy olla työssä? Mun täytyy olla työssä kahdeksalta.
+Sitten Zahra voi mennä töihin tai opiskella lisää. Zahra sanoo, että hän haluaa mennä töihin.
+Hän ei halua opiskella monta vuotta.
+Virkailija sanoo, että on normaalia opiskella suomen kieltä kaksi tai kolme vuotta.
+Virkailija sanoo, että Suomessa monet aikuiset opiskelevat.
+Olen kiinnostunut tekoälystä. Yritykseni kehittää tekoälyä.
+Moni aikuinen opiskelee. Monet aikuiset opiskelevat.
+Hän on mukava. Se on mukava työ. Mukava päivä.
+Onko sulla ammatti? Minun ammattini on myyjä. Mun ammatti on myyjä.
+Sinun ammattisi on kokki. Sun ammatti on kokki.
+Sinun ammattisi on kätilö. Sun ammatti on kätilö.
+Hänen ammattinsa on koulunkäynninohjaaja. Hänen ammatti on koulunkäynninohjaaja.
+Meidän ammattimme on lähihoitaja. Meidän ammatti on sairaanhoitaja.
+Teidän ammattinne on kuski. Teidän ammatti on kuljettaja.
+Heidän ammattinsa on leipuri-kondiittori. Heidän ammatti on leipuri-kondiittori.
+Onko sulla ammatti? Minun ammattini on virkailija. Mun ammatti on sihteeri / toimistotyö / asiakaspalvelutyö
+Sinun ammattisi on rakennusmies. Sun ammatti on rakentaja.
+Hänen ammattinsa on siivooja. Hänen ammatti on siistijä
+Meidän ammattimme on toimittaja. Meidän ammatti on toimittaja.
+Teidän ammattinne on kampaaja. Teidän ammatti on partari.
+Heidän ammattinsa on tulkki. Heidän ammatti on tulkki.
+Minun ammattini on lastenhoitaja. Mun ammatti on lastenhoitaja.
+Minun ammattini on toimitusjohtaja. Mun ammatti on toimitusjohtaja.
+Yritykseni on AI-startup. Johdan tekoälyalan startup-yritystä.
+Monet ihmiset. Moni ihminen. Monta ihmistä.
+Mä menen töihin. Mä oon töissä. Mä tulen töistä.
+
+

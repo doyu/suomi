@@ -1,0 +1,37 @@
+Opiskelija on koulussa.
+Opiskelijat ovat koulussa.
+Koulu on kiinni.
+Koulut ovat kiinni.
+Kysymys on vihkossa.
+Kysymykset ovat vihkossa.
+Vastaus on kirjassa.
+Vastaukset ovat kirjassa.
+Opiskelija on täällä.
+Opiskelijat ovat täällä.
+Koulu on Suomessa.
+Koulut ovat Suomessa.
+Vihko on koulussa.
+Vihkot ovat koulussa.
+Kirja on vihkossa.
+Kirjat ovat vihkossa.
+Opiskelija on suomalainen.
+Opiskelijat ovat suomalaisia.
+Käsi on kipeä.
+Kädet ovat kipeät.
+Jalka on kipeä.
+Jalat ovat kipeät.
+Silmä on kipeä.
+Silmät ovat kipeät.
+Kynä on pöydällä.
+Kynät ovat pöydällä.
+Ensimmäinen kerros on tässä.
+Kerrokset ovat tässä.
+Neljäs kerros on koulussa.
+Kerrokset ovat koulussa.
+Kuukaudet ovat talvella.
+Kuukaudet ovat kesällä.
+Kuukaudet ovat syksyllä.
+Kysymys on kirjassa.
+Kysymykset ovat kirjassa.
+Vastaus on vihkossa.
+Vastaukset ovat vihkossa.
