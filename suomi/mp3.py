@@ -6,6 +6,7 @@ __all__ = ['piper_model', 'text2wav', 'wav2mp3', 'text2mp3', 'mp3s']
 # %% ../nbs/02_mp3.ipynb #2c9e7c97-e31b-420e-bf1f-6a953f47310e
 import csv
 import os
+import tempfile
 from pathlib import Path
 from subprocess import run, CalledProcessError
 from urllib.request import urlretrieve
@@ -87,12 +88,12 @@ def text2mp3(
         return
     if model is None:
         model = piper_model()
-    wav = "output.wav"
+    fd, wav = tempfile.mkstemp(suffix=".wav")
+    os.close(fd)
     try:
         text2wav(s, wav=wav, model=model)
         wav2mp3(wav=wav, mp3=mp3)
     finally:
-        # Clean up temporary WAV file
         if os.path.exists(wav):
             os.remove(wav)
 
