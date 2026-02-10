@@ -43,7 +43,8 @@ def register_cards(
     audio_dir = f"{output_dir}/audio"
     images_dir = f"{output_dir}/images"
     Path(output_dir).mkdir(parents=True, exist_ok=True)
-    
+    print(deck, tsv_path)
+
     tsv_finnish(texts, tsv_path, tags=tags, overwrite=overwrite)
     tsv_complete(tsv_path, dirs=[audio_dir, images_dir])
     if overwrite: deleteDeck(deck)
