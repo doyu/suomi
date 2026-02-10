@@ -6,13 +6,15 @@ __all__ = ['MODEL_NAME', 'deckNames', 'deleteDecks', 'deleteDeck', 'deleteDecksA
 # %% ../nbs/03_anki.ipynb #ce94e80c-d164-4e45-9628-7102b7a9bfab
 import httpx
 import json
+import subprocess
+import time
 from typing import Any
 from pydantic import BaseModel
 
 # %% ../nbs/03_anki.ipynb #903a55b0-44cb-4b5d-aba3-f062c753e25d
 URL = "http://localhost:8765"
 
-def _call(
+def raw_call(
     action: str,  # AnkiConnect action name
     params: dict | None = None,  # Action parameters
     version: int = 6  # AnkiConnect API version
@@ -30,20 +32,47 @@ def _call(
       return data["result"]
 
 
+def ensure_anki(timeout: int = 30) -> None:
+    """Ankiが起動していなければ起動し、AnkiConnectの応答を待つ。"""
+    try:
+        httpx.post(URL, json={"action": "version", "version": 6}, timeout=3)
+        return
+    except (httpx.ConnectError, httpx.TimeoutException):
+        pass
+
+    print("Ankiを起動しています...")
+    subprocess.Popen(
+        ["anki"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        time.sleep(2)
+        try:
+            httpx.post(URL, json={"action": "version", "version": 6}, timeout=3)
+            print("Anki起動完了")
+            return
+        except (httpx.ConnectError, httpx.TimeoutException):
+            continue
+
+    raise ConnectionError(
+        f"Ankiを起動しましたが、{timeout}秒以内にAnkiConnectが応答しませんでした。\n"
+        "AnkiConnectアドオンがインストールされているか確認してください。"
+    )
+
+
 def call(
     action: str,  # AnkiConnect action name
     params: dict | None = None,  # Action parameters
     version: int = 6  # AnkiConnect API version
 ) -> Any:
     try:
-        return _call(action, params, version)
+        return raw_call(action, params, version)
     except httpx.ConnectError:
-        raise ConnectionError("\n".join([
-             "Cannot connect to AnkiConnect. Please ensure:",
-             "1. Anki is running",             
-             "2. AnkiConnect add-on is installed",
-             "3. Anki is listening on http://localhost:8765",
-        ]))
+        ensure_anki()
+        return raw_call(action, params, version)
     except httpx.TimeoutException:
         raise TimeoutError("AnkiConnect request timed out.")
     except RuntimeError as e:
