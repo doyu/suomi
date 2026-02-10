@@ -10,7 +10,6 @@ import tempfile
 from pathlib import Path
 from subprocess import run, CalledProcessError
 from urllib.request import urlretrieve
-import shlex
 
 # %% ../nbs/02_mp3.ipynb #8sc061788i6
 _MODEL_URL = "https://huggingface.co/rhasspy/piper-voices/resolve/main/fi/fi_FI/harri/medium"
@@ -45,7 +44,7 @@ def text2wav(
     if model is None:
         model = piper_model()
     try:
-        run(shlex.split(f"piper --model {model} --output_file {wav}"), input=s.encode(), check=True)
+        run(["piper", "--model", model, "--output_file", wav], input=s.encode(), check=True)
     except FileNotFoundError:
         raise RuntimeError(
             "Piper TTS not found. Install: pip install piper-tts\n"
@@ -64,7 +63,7 @@ def wav2mp3(
 ) -> None:
     """Convert WAV to MP3 using ffmpeg."""
     try:
-        run(shlex.split(f"ffmpeg -hide_banner -loglevel error -y -i {wav} -codec:a libmp3lame -q:a 4 {mp3}"), check=True)
+        run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", wav, "-codec:a", "libmp3lame", "-q:a", "4", mp3], check=True)
     except FileNotFoundError:
         raise RuntimeError(
             "ffmpeg not found. Install:\n"
