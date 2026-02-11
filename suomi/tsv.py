@@ -22,13 +22,19 @@ def texts2tsv(
     output_path: str,  # Output TSV file path (e.g., "tsvs/06_Ruoka.tsv")
     tags: str | list[str] = "lang::fi"  # Tags (string or list), lang::fi auto-included
 ) -> None:
+    """Deprecated: Use tsv_finnish() + tsv_xlate() instead.
+
+    Example migration:
+        # Old:
+        texts2tsv(["kissa"], "vocab.tsv", tags="src::daily")
+        # New:
+        tsv_finnish(["kissa"], "vocab.tsv", tags="src::daily")
+        tsv_xlate("vocab.tsv")
     """
-    Main function: translate Finnish words and create TSV file.
-    Example:
-        >>> texts = ["omena", "banaani", "Minä syön omenaa"]
-        >>> texts2tsv(texts, "tsvs/06_Ruoka.tsv", tags="src::daily")
-        >>> texts2tsv(texts, "tsvs/06_Ruoka.tsv", tags=["src::class", "level::A1"])
-    """
+    warnings.warn(
+        "texts2tsv() is deprecated. Use tsv_finnish() + tsv_xlate() instead.",
+        DeprecationWarning, stacklevel=2
+    )
     # Process tags
     if isinstance(tags, str):
         tag_list = [t.strip() for t in tags.split(",")]
