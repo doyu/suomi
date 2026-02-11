@@ -356,7 +356,7 @@ def tsv_finnish(
 
 # %% ../nbs/01_tsv.ipynb #ril1xwmdbo
 def tsv_status(tsv: str) -> dict:
-    """Analyze TSV completion status.
+    """Analyze TSV completion status (read-only, no file modification).
 
     Returns:
         {
@@ -370,7 +370,6 @@ def tsv_status(tsv: str) -> dict:
             "completion_rate": 0.5
         }
     """
-    ensure_columns(tsv)
     rows, _ = tsv_load(tsv, skip_empty=True)
 
     status = {
@@ -384,27 +383,26 @@ def tsv_status(tsv: str) -> dict:
     }
 
     for row in rows:
-        if row["Finnish"].strip():
+        fi = row.get("Finnish", "").strip()
+        en = row.get("English", "").strip()
+        ja = row.get("Japanese", "").strip()
+        mp3 = row.get("mp3_path", "").strip()
+        img = row.get("img_path", "").strip()
+
+        if fi:
             status["finnish_filled"] += 1
-        if not row["English"].strip():
+        if not en:
             status["english_missing"] += 1
-        if not row["Japanese"].strip():
+        if not ja:
             status["japanese_missing"] += 1
-        if not row["mp3_path"].strip():
+        if not mp3:
             status["mp3_missing"] += 1
-        if not row["img_path"].strip():
+        if not img:
             status["img_missing"] += 1
 
-        # Fully complete if all fields filled
-        if all([
-            row["Finnish"].strip(),
-            row["English"].strip(),
-            row["Japanese"].strip(),
-            row["mp3_path"].strip()
-        ]):
+        if all([fi, en, ja, mp3]):
             status["fully_complete"] += 1
 
-    # Calculate completion rate
     status["completion_rate"] = status["fully_complete"] / status["total_rows"] if status["total_rows"] > 0 else 0.0
 
     return status
