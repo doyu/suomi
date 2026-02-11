@@ -96,21 +96,32 @@ def text2mp3(
         if os.path.exists(wav):
             os.remove(wav)
 
+_MAX_ROWS = 100  # 2-digit zero-padding supports indices 0-99
+
 def mp3s(
     tsv: str,                  # Path to TSV file
     output_dir: str = "audio", # Output directory for MP3 files
     model: str | None = None   # Piper TTS model path (auto-downloaded if None)
 ) -> None:
-    """Generate MP3 files for all Finnish entries in TSV file."""
+    """Generate MP3 files for all Finnish entries in TSV file.
+    
+    Supports up to 100 rows (indices 00-99) due to 2-digit zero-padding.
+    """
     if model is None:
         model = piper_model()
     assert Path(tsv).is_file(), f"TSV file not found: {tsv}"
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     with open(tsv, encoding="utf-8") as f:
-        for i, row in enumerate(csv.DictReader(f, delimiter="\t")):
-            if "Finnish" not in row:
-                continue
-            finnish_text = row["Finnish"].strip()
-            if not finnish_text:
-                continue
-            text2mp3(s=finnish_text, mp3=f"{output_dir}/{Path(tsv).stem}_{i:02}.mp3", model=model)
+        rows = list(csv.DictReader(f, delimiter="\t"))
+    if len(rows) >= _MAX_ROWS:
+        raise ValueError(
+            f"TSV has {len(rows)} rows but mp3s() supports up to {_MAX_ROWS} "
+            f"(2-digit zero-padding 00-99). Split the TSV into smaller files."
+        )
+    for i, row in enumerate(rows):
+        if "Finnish" not in row:
+            continue
+        finnish_text = row["Finnish"].strip()
+        if not finnish_text:
+            continue
+        text2mp3(s=finnish_text, mp3=f"{output_dir}/{Path(tsv).stem}_{i:02}.mp3", model=model)

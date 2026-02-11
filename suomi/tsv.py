@@ -532,7 +532,7 @@ def tsv_mp3(
     """Generate MP3 files and update TSV with paths (differential update).
     
     Only processes rows where mp3_path is empty and Finnish text is non-empty.
-    Uses text2mp3() from suomi.mp3 for audio generation.
+    Supports up to 100 rows (indices 00-99) due to 2-digit zero-padding.
     
     Examples:
         >>> tsv_finnish(["kissa"], "vocab.tsv")
@@ -542,6 +542,11 @@ def tsv_mp3(
     from suomi.mp3 import text2mp3
     
     rows, fields = tsv_load(tsv)
+    if len(rows) >= 100:
+        raise ValueError(
+            f"TSV has {len(rows)} rows but tsv_mp3() supports up to 100 "
+            f"(2-digit zero-padding 00-99). Split the TSV into smaller files."
+        )
     stem = Path(tsv).stem
     
     for i, row in enumerate(rows):
