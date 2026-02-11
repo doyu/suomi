@@ -596,7 +596,8 @@ def tsv_img(
 def tsv_complete(
     tsv: str,                                       # TSV file path
     tasks: list[str] = ["translate", "mp3", "img"], # Tasks to run
-    dirs: list[str] = ["audio", "images"]           # Directories for media
+    dirs: list[str] = ["audio", "images"],           # Directories for media
+    model: str | None = None                        # Piper TTS model path (auto-downloaded if None)
 ) -> dict:
     """Run pipeline tasks on TSV (translate → mp3 → img).
     
@@ -607,6 +608,7 @@ def tsv_complete(
         tsv: TSV file path
         tasks: List of tasks to run. Options: "translate", "mp3", "img"
         dirs: Directories for media search (used by img task)
+        model: Piper TTS model path for mp3 generation (auto-downloaded if None)
         
     Returns:
         Dict with results keyed by task name.
@@ -618,7 +620,7 @@ def tsv_complete(
         result["translate"] = tsv_xlate(tsv)
     
     if "mp3" in tasks:
-        tsv_mp3(tsv)
+        tsv_mp3(tsv, model=model)
         result["mp3"] = "done"
     
     if "img" in tasks:
