@@ -5,11 +5,11 @@
 # %% auto #0
 __all__ = ['suomi_create', 'suomi_latest']
 
-# %% ../nbs/05_cli.ipynb #19fa2b23
+# %% ../nbs/05_cli.ipynb #6770b6a7
 from fastcore.script import call_parse
-from .workflow import register_txt, register_slice, register_latest
+from .workflow import register_txt, register_latest
 
-# %% ../nbs/05_cli.ipynb #6cfdb79a
+# %% ../nbs/05_cli.ipynb #b87f1fb2
 @call_parse
 def suomi_create(
     input_file: str,  # Input text file (one Finnish phrase per line)
@@ -19,7 +19,7 @@ def suomi_create(
     "Create Anki flashcards from a Finnish text file"
     register_txt(input_file, output_dir, overwrite)
 
-# %% ../nbs/05_cli.ipynb #47f14a54
+# %% ../nbs/05_cli.ipynb #097bcccb
 @call_parse
 def suomi_latest(
     input_dir: str = "texts",  # Directory with text files
