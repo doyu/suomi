@@ -81,12 +81,15 @@ Notebooks use special directives:
 
 ## Important Notes from AGENTS.md
 
-- **Answer in Japanese**: Respond to the user primarily in Japanese
-- **Show code concisely**: Display proposed code changes concisely before modifying files
+- **Answer in Japanese**: Respond to the user primarily in Japanese.
+- **Run nbdev_prepare**: Run nbdev_prepare before staged.
+- **Normalize notebooks**: Normalize a notebook if modified with scripts/normalize_notebooks.py before staged.
+- **Ask code review before commit**: Ask my review on any changes at the staged before commit.
+- **Implement code with TDD**: Implement tests at first before its feature.
+- **Implement code concisely**: Implement code as concisely as possible. Don't let a single long big function do all.
 - **Module organization**: Keep modules small and focused; create new notebooks rather than growing existing ones
 - **Testing**: Add tests for error cases (invalid TSV rows, missing audio files)
 - **Assets**: Large binaries in `models/` should be git-ignored unless they are canonical fixtures
-- **Notebook workflow**: Keep notebook outputs stripped unless they convey required context
 
 ## Development Workflow
 
