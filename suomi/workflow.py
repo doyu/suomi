@@ -54,10 +54,17 @@ def register_cards(
 
 
 def register_txt(
-    txt: str,
-    output_dir: str = "output",
-    overwrite: bool = False,
+    txt: str,             # Path to text file with Finnish phrases (one per line)
+    output_dir: str = "output",  # Directory for TSV and audio output
+    overwrite: bool = False,     # If True, overwrite existing TSV and Anki deck
 ) -> str:
+    """Create Anki cards from a text file.
+    
+    Derives deck name and tags from the filename stem.
+    Filenames use "::" as hierarchy separator
+    (e.g., "Ahaa!::06::Perhe.txt" -> deck "Ahaa!::06::Perhe",
+     tags ["Ahaa!::06::Perhe", "Perhe"]).
+    """
     texts = cattxt(txt)
     stm = Path(txt).stem
     deck, tags = stm, [stm, stm.split('::')[-1]]

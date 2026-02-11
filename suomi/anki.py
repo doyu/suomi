@@ -91,8 +91,10 @@ def deleteDeck(deck: str) -> None:
     """Delete specified deck and all its cards."""
     return deleteDecks([deck])
 
-def deleteDecksAll() -> None:
-    """Delete all decks and their cards."""
+def deleteDecksAll(confirm: bool = False) -> None:
+    """Delete all decks and their cards. Requires confirm=True."""
+    if not confirm:
+        raise ValueError("Pass confirm=True to delete all decks")
     return deleteDecks(call("deckNames"))
 
 def sync(): return call("sync")
