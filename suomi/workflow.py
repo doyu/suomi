@@ -23,19 +23,19 @@ def register_cards(
     overwrite: bool = False,
 ) -> str:
     """Create Anki cards from Finnish texts (end-to-end workflow).
-    
+
     Steps:
     1. Create TSV with Finnish column (tsv_finnish)
     2. Fill translations + MP3 + images (tsv_complete)
     3. Upload to Anki (addnotes)
-    
+
     Args:
         texts: Finnish words/phrases
         deck: Anki deck name (e.g., "06::Daily")
         tags: Tags for the cards
         output_dir: Directory for TSV and audio files
         overwrite: If True, overwrite existing TSV
-    
+
     Returns:
         Path to created TSV file
     """
@@ -49,7 +49,7 @@ def register_cards(
     tsv_complete(tsv_path, dirs=[audio_dir, images_dir])
     if overwrite: deleteDeck(deck)
     addnotes(deck, tsv_path)
-    
+
     return tsv_path
 
 
@@ -59,7 +59,7 @@ def register_txt(
     overwrite: bool = False,     # If True, overwrite existing TSV and Anki deck
 ) -> str:
     """Create Anki cards from a text file.
-    
+
     Derives deck name and tags from the filename stem.
     Filenames use "::" as hierarchy separator
     (e.g., "Ahaa!::06::Perhe.txt" -> deck "Ahaa!::06::Perhe",
@@ -78,7 +78,7 @@ def register_card(
     overwrite: bool = False,
 ) -> str:
     """Register a single Finnish card to Anki.
-    
+
     Convenience wrapper around register_cards() for single items.
     """
     return register_cards([text], deck, tags, output_dir, overwrite)
@@ -97,7 +97,7 @@ def register_latest(input_dir:str='texts', output_dir:str="output", overwrite:bo
 
 def register_last(n:int, input_dir:str='texts', output_dir:str="output", overwrite:bool=False)->list[str]:
     """Register the last n text files (by modification time).
-    
+
     Args:
         n: Number of files to process (must be positive)
     """

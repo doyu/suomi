@@ -12,14 +12,32 @@ from subprocess import run, CalledProcessError
 from urllib.request import urlretrieve
 
 # %% ../nbs/02_mp3.ipynb #8sc061788i6
+import shutil
+
 _MODEL_URL = "https://huggingface.co/rhasspy/piper-voices/resolve/main/fi/fi_FI/harri/medium"
 _MODEL_NAME = "fi_FI-harri-medium.onnx"
 
+def _atomic_download(url: str, dest: Path) -> None:
+    """Download a file atomically: write to temp file, then rename.
+
+    Prevents corrupted files from remaining if download is interrupted.
+    """
+    fd, tmp = tempfile.mkstemp(dir=dest.parent)
+    os.close(fd)
+    try:
+        urlretrieve(url, tmp)
+        shutil.move(tmp, dest)
+    except Exception:
+        if os.path.exists(tmp):
+            os.remove(tmp)
+        raise
+
 def piper_model(cache_dir: Path | None = None) -> str:
     """Return path to Piper TTS model, downloading if needed.
-    
+
     Model is cached in ~/.cache/suomi/models/.
     Downloads from HuggingFace on first use.
+    Uses atomic download to prevent corrupted files on interruption.
     """
     if cache_dir is None:
         cache_dir = Path.home() / ".cache" / "suomi"
@@ -27,8 +45,8 @@ def piper_model(cache_dir: Path | None = None) -> str:
     if not model_path.exists():
         model_path.parent.mkdir(parents=True, exist_ok=True)
         print(f"Downloading {_MODEL_NAME}...")
-        urlretrieve(f"{_MODEL_URL}/{_MODEL_NAME}", model_path)
-        urlretrieve(f"{_MODEL_URL}/{_MODEL_NAME}.json", f"{model_path}.json")
+        _atomic_download(f"{_MODEL_URL}/{_MODEL_NAME}", model_path)
+        _atomic_download(f"{_MODEL_URL}/{_MODEL_NAME}.json", Path(f"{model_path}.json"))
         print(f"Saved to {model_path}")
     return str(model_path)
 
@@ -104,7 +122,7 @@ def mp3s(
     model: str | None = None   # Piper TTS model path (auto-downloaded if None)
 ) -> None:
     """Generate MP3 files for all Finnish entries in TSV file.
-    
+
     Supports up to 100 rows (indices 00-99) due to 2-digit zero-padding.
     """
     if model is None:
