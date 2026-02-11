@@ -196,12 +196,15 @@ import os
 def addnotes(
     deck: str,  # Anki deck name
     tsv: str    # Path to TSV file
-) -> None:
+) -> list:
     """Add notes to Anki deck from TSV file.
     
     Reads TSV file and creates Anki cards with Finnish, English, Japanese,
     audio, and image fields. Automatically creates deck if it doesn't exist.
     Uploads media files (MP3 audio and images) to Anki.
+    
+    Returns:
+        List of note IDs from AnkiConnect (None for failed cards).
     """
     if not deck in call("deckNames"): call("createDeck", {"deck":deck})
     ensure_model()  # モデルが存在することを確認
@@ -220,6 +223,7 @@ def addnotes(
         return fn
     
     notes=[]
+    finnish_texts=[]
     with open(tsv, encoding="utf-8") as f:
         for r in csv.DictReader(f, delimiter="\t"):
             r = {k:(v or "").strip() for k,v in r.items()}
@@ -245,5 +249,11 @@ def addnotes(
                 tags=tags
             )
             notes.append(note.model_dump())
+            finnish_texts.append(fi)
     
-    call("addNotes",{"notes":notes})
+    results = call("addNotes",{"notes":notes})
+    failed = [(i, finnish_texts[i]) for i, r in enumerate(results) if r is None]
+    if failed:
+        msgs = [f"  row {i}: {fi}" for i, fi in failed]
+        print(f"addnotes: {len(failed)}/{len(notes)} failed:\n" + "\n".join(msgs))
+    return results
