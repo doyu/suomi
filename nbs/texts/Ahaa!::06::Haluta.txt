@@ -1,0 +1,60 @@
+Haluuks mä opiskella suomea? – Joo, mä haluan opiskella suomea.
+Haluuks sä mennä kävelylle? – Joo, mä haluan mennä kävelylle.
+Haluuks se uida? – Ei, se ei halua uida.
+Haluuks me katsoa televisiota? – Joo, me haluamme katsoa televisiota.
+Haluuks te olla somessa? – Joo, me haluamme olla somessa.
+Haluuks ne kuunnella musiikkia? – Joo, ne haluavat kuunnella musiikkia.
+Osaan mä uida? – Joo, mä osaan uida.
+Osaat sä tehdä ruokaa? – Joo, mä osaan tehdä ruokaa.
+Osaako se ajaa autolla? – Joo, se osaa ajaa autolla.
+Osataanko me puhua suomea? – Me osaamme puhua suomea.
+Osaatteko te laskea hyvin? – Joo, me osaamme laskea hyvin.
+Osaavatko ne korjata auton? – Joo, ne osaavat korjata auton.
+Voin mä mennä kotiin? – Joo, sä voit mennä kotiin.
+Voit sä ostaa maito? – Joo, mä voin ostaa maito.
+Voiko se katsoa televisiota? – Joo, se voi katsoa televisiota.
+Voidaanko me mennä kuntosalille? – Joo, me voimme mennä kuntosalille.
+Voitteko te käydä torilla? – Joo, me voimme käydä torilla.
+Voivatko ne olla netissä? – Joo, ne voivat olla netissä.
+Alan mä opiskella suomea? – Joo, sä alat opiskella suomea.
+Alat sä uida? – Joo, mä alan uida.
+Alkaako se kuunnella musiikkia? – Joo, se alkaa kuunnella musiikkia.
+Alammeko me mennä kävelylle? – Joo, me alamme mennä kävelylle.
+Alatteko te tehdä ruokaa? – Joo, me alamme tehdä ruokaa.
+Alkavatko ne opiskella suomea? – Joo, ne alkavat opiskella suomea.
+Yritän mä puhua suomea? – Joo, mä yritän puhua suomea.
+Yrität sä uida? – Joo, mä yritän uida.
+Yrittääkö se oppia suomea? – Joo, se yrittää oppia suomea.
+Yritämmekö me laskea palkat? – Joo, me yritämme laskea palkat.
+Yritättekö te korjata auton? – Joo, me yritämme korjata auton.
+Yrittävätkö ne tehdä ruokaa? – Joo, ne yrittävät tehdä ruokaa.
+Haluuks mä opiskella suomea? – En, mä en halua opiskella suomea.
+Haluuks sä mennä kävelylle? – En, mä en halua mennä kävelylle.
+Haluuks se uida? – Ei, se ei halua uida.
+Haluuks me katsoa televisiota? – Ei, me ei haluta katsoa televisiota.
+Haluuks te olla somessa? – Ei, me ei haluta olla somessa.
+Haluuks ne kuunnella musiikkia? – Ei, ne ei halua kuunnella musiikkia.
+Osaan mä uida? – En, mä en osaa uida.
+Osaat sä tehdä ruokaa? – En, mä en osaa tehdä ruokaa.
+Osaako se ajaa autolla? – Ei, se ei osaa ajaa autolla.
+Osataanko me puhua suomea? – Ei, me ei osata puhua suomea.
+Osaatteko te laskea hyvin? – Ei, me ei osata laskea hyvin.
+Osaavatko ne korjata auton? – Ei, ne ei osaa korjata auton.
+Voin mä mennä kotiin? – En, mä en voi mennä kotiin.
+Voit sä ostaa maito? – En, mä en voi ostaa maito.
+Voiko se katsoa televisiota? – Ei, se ei voi katsoa televisiota.
+Voidaanko me mennä kuntosalille? – Ei, me ei voida mennä kuntosalille.
+Voitteko te käydä torilla? – Ei, me ei voida käydä torilla.
+Voivatko ne olla netissä? – Ei, ne ei voi olla netissä.
+Alan mä opiskella suomea? – En, mä en ala opiskella suomea.
+Alat sä uida? – En, mä en ala uida.
+Alkaako se kuunnella musiikkia? – Ei, se ei ala kuunnella musiikkia.
+Alammeko me mennä kävelylle? – Ei, me ei aleta mennä kävelylle.
+Alatteko te tehdä ruokaa? – Ei, me ei aleta tehdä ruokaa.
+Alkavatko ne opiskella suomea? – Ei, ne ei ala opiskella suomea.
+Yritän mä puhua suomea? – En, mä en yritä puhua suomea.
+Yrität sä uida? – En, mä en yritä uida.
+Yrittääkö se oppia suomea? – Ei, se ei yritä oppia suomea.
+Yritämmekö me laskea palkat? – Ei, me ei yritetä laskea palkat.
+Yritättekö te korjata auton? – Ei, me ei yritetä korjata auton.
+Yrittävätkö ne tehdä ruokaa? – Ei, ne ei yritä tehdä ruokaa.
