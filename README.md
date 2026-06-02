@@ -59,6 +59,9 @@ started.
 # make sure suomi package is installed in development mode
 $ pip install -e .
 
+# one-time after clone: install notebook git hooks (trust + merge driver)
+$ nbdev_install_hooks
+
 # make changes under nbs/ directory
 # ...
 
